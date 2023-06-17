@@ -1,6 +1,7 @@
-import Footer from './components/Footer'
-import Header from './components/Header'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 import './globals.css'
+import { ProductContextProvider } from '../context/ProductContext'
 
 
 export const metadata = {
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='flex flex-col justify-between h-screen text-center'>
-        <Header />
-        {children}
-        <Footer />
+        <ProductContextProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ProductContextProvider>
         </body>
     </html>
   )

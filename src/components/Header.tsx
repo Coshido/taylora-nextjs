@@ -6,7 +6,7 @@ type Props = {}
 const Header = (props: Props) => {
   return (
     <header className="flex flex-col justify-center">
-        <h1 className="text-lg">Product Builder</h1>
+        <h1 className="text-5xl">Product Builder</h1>
         <Navbar />
     </header>
     
