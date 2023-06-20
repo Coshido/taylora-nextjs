@@ -1,0 +1,75 @@
+{
+    "cars": [
+        {
+            "id": 1,
+            "model": "i3",
+            "basePrice": 42400,
+            "variations": [
+                {
+                    "color": "white",
+                    "price": 0,
+                    "image":"/product01_col01.jpg"
+                },
+                {
+                    "color": "grey",
+                    "price": 550,
+                    "image":"/product01_col02.jpg"
+                },
+                {
+                    "color": "orange",
+                    "price": 550,
+                    "image":"/product01_col03.jpg"
+                }
+            ],
+            "accessories":[
+                {
+                    "optional":"charging station",
+                    "price": 1080
+                },
+                {
+                    "optional":"maintenance program upgrade",
+                    "price": 1895
+                },
+                {
+                    "optional":"1 year maintenance program update",
+                    "price": 975
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "model": "i8",
+            "basePrice": 140700,
+            "variations": [
+                {
+                    "color": "grey",
+                    "price": 0,
+                    "image":"/product02_col01.jpg"
+                },
+                {
+                    "color": "pearl",
+                    "price": 1800,
+                    "image":"/product02_col02.jpg"
+                }
+            ],
+            "accessories":[
+                {
+                    "optional":"laserlight",
+                    "price": 6300
+                },
+                {
+                    "optional":"charging station",
+                    "price": 1080
+                },
+                {
+                    "optional":"maintenance program upgrade",
+                    "price": 1895
+                },
+                {
+                    "optional":"1 year maintenance program update",
+                    "price": 975
+                }
+            ]
+        }
+    ]
+}

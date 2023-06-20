@@ -1,11 +1,13 @@
-import React from 'react'
+"use client";
+import React from "react";
+import { useProduct } from "../context/ProductContext";
 
-type Props = {}
+type Props = {};
 
 const Footer = (props: Props) => {
-  return (
-    <div className='w-full text-lg text-center bg-slate-200'>Footer</div>
-  )
-}
+  const { model, setModel } = useProduct();
 
-export default Footer
+  return <div className="w-full text-lg text-center bg-slate-200">{model}</div>;
+};
+
+export default Footer;
