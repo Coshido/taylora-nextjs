@@ -4,16 +4,22 @@ import Radio from "@/src/components/Radio";
 import { useProduct } from "@/src/context/ProductContext";
 import { fetchAll } from "@/src/lib/fetchAll";
 import Image from "next/image";
-import { useState } from "react";
 
 type Props = {};
 
 const Models = (props: Props) => {
   const { model, setModel } = useProduct();
+  const { color, setColor } = useProduct();
   const data = fetchAll();
 
-  const onClickHandler = (model: string) => {
-    setModel(model);
+  const onClickHandler = (clickedModel: string) => {
+    clickedModel === model ? setModel("") : setModel(clickedModel);
+
+    if (model === data[0].model) {
+      setColor(data[0].variations[0].color);
+    } else {
+      setColor(data[1].variations[0].color);
+    }
   };
 
   const content = data.map((ele) => {
@@ -21,7 +27,7 @@ const Models = (props: Props) => {
       <div
         key={ele.id}
         className={`p-11 gap-5 border-2 rounded-sm  flex flex-col hover:cursor-pointer ${
-          ele.model === model ? "border-[#ffb500]" : "border-[#ededed]"
+          ele.model === model ? "border-c-active" : "border-[#ededed]"
         }`}
         onClick={() => onClickHandler(ele.model)}
       >
@@ -48,7 +54,7 @@ const Models = (props: Props) => {
     );
   });
 
-  return <div className="flex gap-10 p-10">{content}</div>;
+  return <div className="flex gap-10 p-16">{content}</div>;
 };
 
 export default Models;

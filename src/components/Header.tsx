@@ -1,17 +1,17 @@
-import React from 'react'
-import Navbar from './Navbar'
+import React from "react";
+import Navbar from "./Navbar";
 
-type Props = {}
+type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <header className="flex flex-col justify-center">
-        <h1 className="text-5xl">Product Builder</h1>
-        <Navbar />
+    <header className="flex flex-col justify-center pt-10 gap-10">
+      <h1 className="text-[38px] font-bold font-lato text-t-grey">
+        Product Builder
+      </h1>
+      <Navbar />
     </header>
-    
-    
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

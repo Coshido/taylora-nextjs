@@ -10,14 +10,20 @@ import {
 
 interface IProductContext extends Product {
   setModel: Dispatch<SetStateAction<string>>;
+  setColor: Dispatch<SetStateAction<string>>;
+  setAccessories: Dispatch<SetStateAction<string[]>>;
+  setPrice: Dispatch<SetStateAction<number>>;
 }
 
 export const ProductContext = createContext<IProductContext>({
   model: "",
   color: "",
-  accessories: [],
+  accessories: [""],
   price: 0,
   setModel: () => {},
+  setColor: () => {},
+  setAccessories: () => {},
+  setPrice: () => {},
 });
 
 type Props = {
@@ -27,12 +33,21 @@ type Props = {
 export const ProductContextProvider = ({ children }: Props) => {
   const [model, setModel] = useState("");
   const [color, setColor] = useState("");
-  const [accessories, setAccessories] = useState([]);
+  const [accessories, setAccessories] = useState([""]);
   const [price, setPrice] = useState(0);
 
   return (
     <ProductContext.Provider
-      value={{ model, color, accessories, price, setModel }}
+      value={{
+        model,
+        color,
+        accessories,
+        price,
+        setModel,
+        setColor,
+        setAccessories,
+        setPrice,
+      }}
     >
       {children}
     </ProductContext.Provider>

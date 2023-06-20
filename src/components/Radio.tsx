@@ -7,7 +7,7 @@ type Props = {
 
 const Radio = (props: Props) => {
   const content = props.active ? (
-    <div className=" bg-[#ffb500] h-[30px] w-[30px] self-center rounded-full">
+    <div className=" bg-c-active h-[30px] w-[30px] self-center rounded-full">
       <Image
         src="/cd-icon-check.svg"
         alt="Radio Button"

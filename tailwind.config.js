@@ -19,6 +19,7 @@ module.exports = {
       colors: {
         "t-grey": "#24221F ",
         "t-lightgrey": "#5D7C89  ",
+        "c-active": "#ffb500",
       },
     },
   },
