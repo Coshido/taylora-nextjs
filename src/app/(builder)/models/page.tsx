@@ -4,6 +4,7 @@ import Radio from "@/src/components/Radio";
 import { useProduct } from "@/src/context/ProductContext";
 import { fetchAll } from "@/src/lib/fetchAll";
 import Image from "next/image";
+import { useCallback, useEffect } from "react";
 
 type Props = {};
 
@@ -14,13 +15,16 @@ const Models = (props: Props) => {
 
   const onClickHandler = (clickedModel: string) => {
     clickedModel === model ? setModel("") : setModel(clickedModel);
-
-    if (model === data[0].model) {
-      setColor(data[0].variations[0].color);
-    } else {
-      setColor(data[1].variations[0].color);
-    }
   };
+
+  const setBaseColor = useCallback(() => {
+    const currentModel = data.filter((ele) => ele.model == model);
+    setColor(currentModel[0]?.variations[0].color);
+  }, [data, model, setColor]);
+
+  useEffect(() => {
+    setBaseColor();
+  }, [model, setBaseColor]);
 
   const content = data.map((ele) => {
     return (
@@ -41,6 +45,7 @@ const Models = (props: Props) => {
           height="0"
           sizes="100vw"
           className="w-auto h-auto"
+          priority={true}
         />
         <p className="font-lato text-t-lightgrey focus:bg-inherit">
           from ${Intl.NumberFormat("en-US").format(ele.basePrice)}
