@@ -5,8 +5,8 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <header className="flex flex-col justify-center pt-10 gap-10">
-      <h1 className="text-[38px] font-bold font-lato text-t-grey">
+    <header className="flex flex-col justify-center pt-12 gap-8 h-40 w-full">
+      <h1 className="text-[48px] font-bold font-lato text-t-grey">
         Product Builder
       </h1>
       <Navbar />

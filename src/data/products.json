@@ -7,16 +7,19 @@
             "variations": [
                 {
                     "color": "white",
+                    "colorHex": "#FFFFFF",
                     "price": 0,
                     "image":"/product01_col01.jpg"
                 },
                 {
                     "color": "grey",
+                    "colorHex": "#303539",
                     "price": 550,
                     "image":"/product01_col02.jpg"
                 },
                 {
                     "color": "orange",
+                    "colorHex": "#CF5A16",
                     "price": 550,
                     "image":"/product01_col03.jpg"
                 }
@@ -43,11 +46,13 @@
             "variations": [
                 {
                     "color": "grey",
+                    "colorHex": "#303539",
                     "price": 0,
                     "image":"/product02_col01.jpg"
                 },
                 {
                     "color": "pearl",
+                    "colorHex": "#D1D1D1",
                     "price": 1800,
                     "image":"/product02_col02.jpg"
                 }
