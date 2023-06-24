@@ -76,7 +76,7 @@ const Models = (props: Props) => {
   return (
     <AnimatePresence>
       <motion.div
-        className="flex gap-14 px-16 justify-center flex-col lg:flex-row mb-8"
+        className="flex gap-14 px-4 lg:px-16 justify-center flex-col lg:flex-row mb-8"
         key="color"
         initial={{ x: "-50%", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
