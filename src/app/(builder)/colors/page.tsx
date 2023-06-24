@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {};
 
@@ -61,45 +62,54 @@ const Colors = (props: Props) => {
   }, [color, getImage, data, setPrice]);
 
   return (
-    <div className="flex flex-col gap-14">
-      <Image
-        src={imgLink}
-        alt={`Picture of the BMW ${model} model`}
-        width="0"
-        height="0"
-        sizes="100vw"
-        className="w-auto max-h-[356px] mx-auto"
-        priority={true}
-      />
-      <div className="flex justify-center gap-5 font-lato">
-        {data[0]?.variations.map((ele) => (
-          <div
-            key={ele.color}
-            className={`rounded-full w-10 h-10 md:w-14 md:h-14 border-2 p-0.5 ${
-              ele.color === color ? "border-c-active" : "border-[#ededed]"
-            }`}
-            data-tooltip-id={ele.colorName}
-            data-tooltip-content={`${ele.colorName} - $${ele.price}`}
-            data-tooltip-place="top"
-          >
-            <Tooltip
-              id={ele.colorName}
-              style={{
-                backgroundColor: "#ededed",
-                color: "#24221F",
-                borderRadius: "20px",
-                fontSize: "16px",
-              }}
-            />
+    <AnimatePresence>
+      <motion.div
+        className="flex flex-col gap-14"
+        key="color"
+        initial={{ x: "-50%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: "-50%", opacity: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <Image
+          src={imgLink}
+          alt={`Picture of the BMW ${model} model`}
+          width="0"
+          height="0"
+          sizes="100vw"
+          className="w-auto max-h-[356px] mx-auto"
+          priority={true}
+        />
+        <div className="flex justify-center gap-5 font-lato">
+          {data[0]?.variations.map((ele) => (
             <div
-              className={`rounded-full h-full`}
-              style={{ backgroundColor: ele.colorHex }}
-              onClick={() => handleColor(ele.color)}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
+              key={ele.color}
+              className={`rounded-full w-10 h-10 md:w-14 md:h-14 border-2 p-0.5 ${
+                ele.color === color ? "border-c-active" : "border-[#ededed]"
+              }`}
+              data-tooltip-id={ele.colorName}
+              data-tooltip-content={`${ele.colorName} - $${ele.price}`}
+              data-tooltip-place="top"
+            >
+              <Tooltip
+                id={ele.colorName}
+                style={{
+                  backgroundColor: "#ededed",
+                  color: "#24221F",
+                  borderRadius: "20px",
+                  fontSize: "16px",
+                }}
+              />
+              <div
+                className={`rounded-full h-full`}
+                style={{ backgroundColor: ele.colorHex }}
+                onClick={() => handleColor(ele.color)}
+              />
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

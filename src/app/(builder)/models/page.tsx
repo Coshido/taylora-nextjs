@@ -5,6 +5,7 @@ import { useProduct } from "@/src/context/ProductContext";
 import { fetchAll } from "@/src/lib/fetchAll";
 import Image from "next/image";
 import { useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {};
 
@@ -69,9 +70,18 @@ const Models = (props: Props) => {
   });
 
   return (
-    <div className="flex gap-14 px-16 justify-center flex-col lg:flex-row mb-8">
-      {content}
-    </div>
+    <AnimatePresence>
+      <motion.div
+        className="flex gap-14 px-16 justify-center flex-col lg:flex-row mb-8"
+        key="color"
+        initial={{ x: "-50%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: "-50%", opacity: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        {content}
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

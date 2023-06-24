@@ -4,6 +4,7 @@ import { useProduct } from "@/src/context/ProductContext";
 import { fetchAll } from "@/src/lib/fetchAll";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {};
 
@@ -62,33 +63,42 @@ const Accessories = (props: Props) => {
   }, [setAccessoriesPrice, color, data, setPrice]);
 
   return (
-    <div className="flex flex-col gap-5 px-6 lg:px-16 2xl:px-40 mb-8">
-      {data.length !== 0
-        ? data[0].accessories.map((ele) => (
-            <div
-              key={ele.optional}
-              className={`flex flex-col items-center lg:flex-row lg:justify-between gap-4 border-2 p-6 text-[18px] lg:text-[26px] font-bold ${
-                accessories.includes(ele.optional)
-                  ? `border-c-active`
-                  : `border-[#EDEDED]`
-              }  `}
-              onClick={() => handleClick(ele.optional)}
-            >
-              <p>{ele.optional}</p>
-              <div className="flex flex-col lg:flex-row gap-4">
-                <p className=" text-t-lightgrey lg:text-black text-[16px] lg:text-[26px]">
-                  ${Intl.NumberFormat("en-US").format(ele.price)}
-                </p>
-                {accessories.includes(ele.optional) ? (
-                  <Check active={true} />
-                ) : (
-                  <Check active={false} />
-                )}
+    <AnimatePresence>
+      <motion.div
+        className="flex flex-col gap-5 px-6 lg:px-16 2xl:px-40 mb-8"
+        key="color"
+        initial={{ x: "-50%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: "-50%", opacity: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        {data.length !== 0
+          ? data[0].accessories.map((ele) => (
+              <div
+                key={ele.optional}
+                className={`flex flex-col items-center lg:flex-row lg:justify-between gap-4 border-2 p-6 text-[18px] lg:text-[26px] font-bold ${
+                  accessories.includes(ele.optional)
+                    ? `border-c-active`
+                    : `border-[#EDEDED]`
+                }  `}
+                onClick={() => handleClick(ele.optional)}
+              >
+                <p>{ele.optional}</p>
+                <div className="flex flex-col lg:flex-row gap-4">
+                  <p className=" text-t-lightgrey lg:text-black text-[16px] lg:text-[26px]">
+                    ${Intl.NumberFormat("en-US").format(ele.price)}
+                  </p>
+                  {accessories.includes(ele.optional) ? (
+                    <Check active={true} />
+                  ) : (
+                    <Check active={false} />
+                  )}
+                </div>
               </div>
-            </div>
-          ))
-        : ""}
-    </div>
+            ))
+          : ""}
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
