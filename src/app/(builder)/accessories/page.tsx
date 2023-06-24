@@ -14,10 +14,12 @@ const Accessories = (props: Props) => {
 
   const { push } = useRouter();
 
-  if (model == "") {
-    setShowPopUp(true);
-    push("/models");
-  }
+  useEffect(() => {
+    if (model == "") {
+      setShowPopUp(true);
+      push("/models");
+    }
+  }, [model, push, setShowPopUp]);
 
   const data = fetchAll().filter((ele) => ele.model == model);
 
