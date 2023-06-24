@@ -10,12 +10,17 @@ import { useCallback, useEffect } from "react";
 type Props = {};
 
 const Models = (props: Props) => {
-  const { model, setModel, setColor, setPrice } = useProduct();
+  const { model, setModel, setColor, setPrice, setAccessories } = useProduct();
 
   const data = fetchAll();
 
   const onClickHandler = (clickedModel: string) => {
-    clickedModel === model ? setModel("") : setModel(clickedModel);
+    if (clickedModel === model) {
+      setModel("");
+    } else {
+      setModel(clickedModel);
+      setAccessories([]);
+    }
   };
 
   const setBasePrice = useCallback(() => {
