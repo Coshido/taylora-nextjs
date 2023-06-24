@@ -11,6 +11,7 @@ interface Data {
     basePrice: number;
     variations: {
         color: string;
+        colorName: string;
         colorHex: string;
         price: number;
         image: string;

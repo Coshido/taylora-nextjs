@@ -53,7 +53,7 @@ const Models = (props: Props) => {
           width="0"
           height="0"
           sizes="100%"
-          className="h-[218px] w-auto"
+          className="max-h-[218px] w-auto mx-auto"
           priority={true}
         />
         <p className="font-lato text-t-lightgrey focus:bg-inherit">
@@ -68,7 +68,11 @@ const Models = (props: Props) => {
     );
   });
 
-  return <div className="flex gap-14 px-16 justify-center">{content}</div>;
+  return (
+    <div className="flex gap-14 px-16 justify-center flex-col lg:flex-row mb-8">
+      {content}
+    </div>
+  );
 };
 
 export default Models;

@@ -1,15 +1,24 @@
 "use client";
+import Check from "@/src/components/Check";
 import { useProduct } from "@/src/context/ProductContext";
 import { fetchAll } from "@/src/lib/fetchAll";
+import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect } from "react";
 
 type Props = {};
 
 const Accessories = (props: Props) => {
-  const { model } = useProduct();
+  const { model, setShowPopUp } = useProduct();
   const { accessories, setAccessories } = useProduct();
   const { price, setPrice } = useProduct();
   const { color } = useProduct();
+
+  const { push } = useRouter();
+
+  if (model === "") {
+    setShowPopUp(true);
+    push("/models");
+  }
 
   const data = fetchAll().filter((ele) => ele.model == model);
 
@@ -43,32 +52,42 @@ const Accessories = (props: Props) => {
 
   useEffect(() => {
     const accessoriesPrice = setAccessoriesPrice();
-    data[0].variations.map((ele) => {
-      if (ele.color === color) {
-        setPrice(data[0].basePrice + ele.price + accessoriesPrice);
-      }
-    });
+    if (data.length !== 0) {
+      data[0].variations.map((ele) => {
+        if (ele.color === color) {
+          setPrice(data[0].basePrice + ele.price + accessoriesPrice);
+        }
+      });
+    }
   }, [setAccessoriesPrice, color, data, setPrice]);
 
   return (
-    <div className="flex flex-col gap-5">
-      {data[0].accessories.map((ele) => (
-        <div
-          key={ele.optional}
-          className="flex justify-between border-2 border-t-lightgrey p-6"
-        >
-          <p>{ele.optional}</p>
-          <div className="flex gap-2">
-            <p>{ele.price}</p>
+    <div className="flex flex-col gap-5 px-6 lg:px-16 2xl:px-40 mb-8">
+      {data.length !== 0
+        ? data[0].accessories.map((ele) => (
             <div
-              className="border-2 border-t-lightgrey"
+              key={ele.optional}
+              className={`flex flex-col items-center lg:flex-row lg:justify-between gap-4 border-2 p-6 text-[18px] lg:text-[26px] font-bold ${
+                accessories.includes(ele.optional)
+                  ? `border-c-active`
+                  : `border-[#EDEDED]`
+              }  `}
               onClick={() => handleClick(ele.optional)}
             >
-              check
+              <p>{ele.optional}</p>
+              <div className="flex flex-col lg:flex-row gap-4">
+                <p className=" text-t-lightgrey lg:text-black text-[16px] lg:text-[26px]">
+                  ${Intl.NumberFormat("en-US").format(ele.price)}
+                </p>
+                {accessories.includes(ele.optional) ? (
+                  <Check active={true} />
+                ) : (
+                  <Check active={false} />
+                )}
+              </div>
             </div>
-          </div>
-        </div>
-      ))}
+          ))
+        : ""}
     </div>
   );
 };

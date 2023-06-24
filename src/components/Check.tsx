@@ -6,7 +6,7 @@ type Props = {
   active: Boolean;
 };
 
-const Radio = (props: Props) => {
+const Check = (props: Props) => {
   const content = props.active ? (
     <motion.div
       initial={{ scale: 1 }}
@@ -17,23 +17,22 @@ const Radio = (props: Props) => {
         stiffness: 400,
         damping: 17,
       }}
-      className=" bg-c-active h-[30px] w-[30px] self-center rounded-full flex justify-center"
+      className=" bg-c-active h-[30px] w-[30px] self-center"
     >
       <Image
         src="/cd-icon-check.svg"
-        alt="Radio Button"
+        alt="Check Button"
         height="30"
         width="30"
-        className="self-center"
       />
     </motion.div>
   ) : (
     <div className="h-[30px] w-[30px] self-center flex align-middle justify-center">
-      <div className="border-[#ededed] border-2 rounded-full h-[26px] w-[26px]" />
+      <div className="border-[#ededed] border-2 h-[26px] w-[26px]" />
     </div>
   );
 
   return content;
 };
 
-export default Radio;
+export default Check;

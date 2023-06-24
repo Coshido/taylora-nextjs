@@ -7,18 +7,21 @@
             "variations": [
                 {
                     "color": "white",
+                    "colorName": "White",
                     "colorHex": "#FFFFFF",
                     "price": 0,
                     "image":"/product01_col01.jpg"
                 },
                 {
                     "color": "grey",
+                    "colorName": "Mineral Grey",
                     "colorHex": "#303539",
                     "price": 550,
                     "image":"/product01_col02.jpg"
                 },
                 {
                     "color": "orange",
+                    "colorName": "Orange Metallic",
                     "colorHex": "#CF5A16",
                     "price": 550,
                     "image":"/product01_col03.jpg"
@@ -26,15 +29,15 @@
             ],
             "accessories":[
                 {
-                    "optional":"charging station",
+                    "optional":"BMW Charging Station",
                     "price": 1080
                 },
                 {
-                    "optional":"maintenance program upgrade",
+                    "optional":"BMW Maintenance Program Upgrade",
                     "price": 1895
                 },
                 {
-                    "optional":"1 year maintenance program update",
+                    "optional":"1 Year BMW Maintenance Program Update",
                     "price": 975
                 }
             ]
@@ -46,12 +49,14 @@
             "variations": [
                 {
                     "color": "grey",
+                    "colorName": "Grey Metallic",
                     "colorHex": "#303539",
                     "price": 0,
                     "image":"/product02_col01.jpg"
                 },
                 {
                     "color": "pearl",
+                    "colorName": "White Pearl Metallic",
                     "colorHex": "#D1D1D1",
                     "price": 1800,
                     "image":"/product02_col02.jpg"
@@ -59,19 +64,19 @@
             ],
             "accessories":[
                 {
-                    "optional":"laserlight",
+                    "optional":"BMW Laserlight",
                     "price": 6300
                 },
                 {
-                    "optional":"charging station",
+                    "optional":"BMW Charging Station",
                     "price": 1080
                 },
                 {
-                    "optional":"maintenance program upgrade",
+                    "optional":"BMW Maintenance Program Upgrade",
                     "price": 1895
                 },
                 {
-                    "optional":"1 year maintenance program update",
+                    "optional":"1 Year BMW Maintenance Program Update",
                     "price": 975
                 }
             ]

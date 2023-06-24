@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useProduct } from "../context/ProductContext";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const { model, showPopUp, setShowPopUp } = useProduct();
   const pathname = usePathname();
 
   const activeClass = "text-c-active border-b-2 border-b-c-active";
@@ -19,20 +21,35 @@ const Navbar = (props: Props) => {
         MODELS
       </Link>
       <Link
-        href="/colors"
-        className={`p-1 ${pathname == "/colors" ? activeClass : ""}`}
+        href={model === "" ? "" : "/colors"}
+        className={`p-1 ${pathname == "/colors" ? activeClass : ""} ${
+          model === "" ? "text-[#d1d1d1]" : ""
+        }`}
+        onClick={() => {
+          model === "" ? setShowPopUp(true) : setShowPopUp(false);
+        }}
       >
         COLORS
       </Link>
       <Link
-        href="/accessories"
-        className={`p-1 ${pathname == "/accessories" ? activeClass : ""}`}
+        href={model === "" ? "" : "/accessories"}
+        className={`p-1 ${pathname == "/accessories" ? activeClass : ""}${
+          model === "" ? "text-[#d1d1d1]" : ""
+        }`}
+        onClick={() => {
+          model === "" ? setShowPopUp(true) : setShowPopUp(false);
+        }}
       >
         ACCESSORIES
       </Link>
       <Link
-        href="/summary"
-        className={`p-1 ${pathname == "/summary" ? activeClass : ""}`}
+        href={model === "" ? "" : "/summary"}
+        className={`p-1 ${pathname == "/summary" ? activeClass : ""}${
+          model === "" ? "text-[#d1d1d1]" : ""
+        }`}
+        onClick={() => {
+          model === "" ? setShowPopUp(true) : setShowPopUp(false);
+        }}
       >
         SUMMARY
       </Link>

@@ -13,17 +13,21 @@ interface IProductContext extends Product {
   setColor: Dispatch<SetStateAction<string>>;
   setAccessories: Dispatch<SetStateAction<string[]>>;
   setPrice: Dispatch<SetStateAction<number>>;
+  showPopUp: boolean;
+  setShowPopUp: Dispatch<SetStateAction<boolean>>;
 }
 
 export const ProductContext = createContext<IProductContext>({
   model: "",
   color: "",
-  accessories: [""],
+  accessories: [] as string[],
   price: 0,
+  showPopUp: false,
   setModel: () => {},
   setColor: () => {},
   setAccessories: () => {},
   setPrice: () => {},
+  setShowPopUp: () => {},
 });
 
 type Props = {
@@ -33,8 +37,9 @@ type Props = {
 export const ProductContextProvider = ({ children }: Props) => {
   const [model, setModel] = useState("");
   const [color, setColor] = useState("");
-  const [accessories, setAccessories] = useState([""]);
+  const [accessories, setAccessories] = useState<string[]>([]);
   const [price, setPrice] = useState(0);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   return (
     <ProductContext.Provider
@@ -43,10 +48,14 @@ export const ProductContextProvider = ({ children }: Props) => {
         color,
         accessories,
         price,
+
+        showPopUp,
         setModel,
         setColor,
         setAccessories,
         setPrice,
+
+        setShowPopUp,
       }}
     >
       {children}
