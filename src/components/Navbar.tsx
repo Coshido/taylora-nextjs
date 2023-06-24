@@ -1,13 +1,12 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useProduct } from "../context/ProductContext";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
-  const { model, showPopUp, setShowPopUp } = useProduct();
+  const { model, setShowPopUp } = useProduct();
   const pathname = usePathname();
 
   const activeClass = "text-c-active border-b-2 border-b-c-active";

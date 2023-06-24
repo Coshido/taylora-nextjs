@@ -1,11 +1,11 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useProduct } from "../context/ProductContext";
-import { usePathname, useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useProduct } from "../context/ProductContext";
 import { fetchAll } from "../lib/fetchAll";
-import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {};
 
@@ -13,14 +13,10 @@ const Footer = (props: Props) => {
   const [imgLink, setImgLink] = useState("");
   const { showPopUp, setShowPopUp } = useProduct();
 
-  const { price, setPrice } = useProduct();
-  const { model } = useProduct();
-  const { color } = useProduct();
-  const { accessories } = useProduct();
+  const { price, model, color } = useProduct();
 
   const pathname = usePathname();
   const router = useRouter();
-  const noInitialRender = useRef(false);
   const data = fetchAll();
 
   const getImage = useCallback(

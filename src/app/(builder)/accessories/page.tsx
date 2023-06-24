@@ -2,21 +2,19 @@
 import Check from "@/src/components/Check";
 import { useProduct } from "@/src/context/ProductContext";
 import { fetchAll } from "@/src/lib/fetchAll";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect } from "react";
 
 type Props = {};
 
 const Accessories = (props: Props) => {
-  const { model, setShowPopUp } = useProduct();
-  const { accessories, setAccessories } = useProduct();
-  const { price, setPrice } = useProduct();
-  const { color } = useProduct();
+  const { model, color, accessories, setAccessories, setPrice, setShowPopUp } =
+    useProduct();
 
   const { push } = useRouter();
 
-  if (model === "") {
+  if (model == "") {
     setShowPopUp(true);
     push("/models");
   }

@@ -1,20 +1,17 @@
 "use client";
 import { useProduct } from "@/src/context/ProductContext";
 import { fetchAll } from "@/src/lib/fetchAll";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
-import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {};
 
 const Colors = (props: Props) => {
   const [imgLink, setImgLink] = useState("");
-  const { model, setModel } = useProduct();
-  const { color, setColor } = useProduct();
-  const { price, setPrice } = useProduct();
-  const { showPopUp, setShowPopUp } = useProduct();
+  const { model, color, setColor, setPrice, setShowPopUp } = useProduct();
 
   const { push } = useRouter();
 

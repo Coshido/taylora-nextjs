@@ -1,7 +1,7 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import "./globals.css";
 import { ProductContextProvider } from "../context/ProductContext";
+import "./globals.css";
 
 export const metadata = {
   title: "Product Builder",

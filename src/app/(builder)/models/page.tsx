@@ -3,16 +3,15 @@
 import Radio from "@/src/components/Radio";
 import { useProduct } from "@/src/context/ProductContext";
 import { fetchAll } from "@/src/lib/fetchAll";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {};
 
 const Models = (props: Props) => {
-  const { model, setModel } = useProduct();
-  const { color, setColor } = useProduct();
-  const { price, setPrice } = useProduct();
+  const { model, setModel, setColor, setPrice } = useProduct();
+
   const data = fetchAll();
 
   const onClickHandler = (clickedModel: string) => {

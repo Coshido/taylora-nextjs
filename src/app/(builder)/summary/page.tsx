@@ -1,10 +1,10 @@
 "use client";
 import { useProduct } from "@/src/context/ProductContext";
 import { fetchAll } from "@/src/lib/fetchAll";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
 
 type Props = {};
 
