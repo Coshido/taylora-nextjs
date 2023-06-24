@@ -13,7 +13,7 @@ const Summary = (props: Props) => {
   const [colorHex, setColorHex] = useState("");
   const [colorName, setColorName] = useState("");
   const [colorPrice, setColorPrice] = useState(0);
-  const { model, color, accessories, setShowPopUp } = useProduct();
+  const { model, color, accessories, setColor, setShowPopUp } = useProduct();
 
   const { push } = useRouter();
 
@@ -40,8 +40,11 @@ const Summary = (props: Props) => {
   );
 
   useEffect(() => {
+    if (color == "") {
+      setColor(data[0].variations[0].color);
+    }
     getVariationInfo(color);
-  }, [color, getVariationInfo]);
+  }, [color, getVariationInfo, data, setColor]);
 
   console.log(accessories);
   return (
